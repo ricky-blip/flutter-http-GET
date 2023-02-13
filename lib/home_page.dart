@@ -10,7 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
@@ -40,13 +39,14 @@ class HomePage extends StatelessWidget {
                 //variabel untuk mengambil data index
                 final user = users[index];
                 return ListTile(
-                  title: Row(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(user.id),
-                      Text(user.nama),
+                      Text('ID : ${user.id}'),
+                      Text('Username :${user.username}'),
                     ],
                   ),
-                  subtitle: Text(user.kota),
+                  subtitle: Text('Password :${user.password}'),
                 );
               },
             );

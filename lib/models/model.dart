@@ -1,18 +1,18 @@
 class UserModel {
-  final String nama;
-  final String kota;
+  final String username;
+  final String password;
   final String id;
 
   const UserModel({
-    required this.nama,
-    required this.kota,
+    required this.username,
+    required this.password,
     required this.id,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      nama: json['nama'],
-      kota: json['kota'],
+      username: json['username'],
+      password: json['password'],
       id: json['id'],
     );
   }

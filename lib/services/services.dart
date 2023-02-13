@@ -5,6 +5,7 @@ import 'package:flutter_http_get/models/model.dart';
 import 'package:http/http.dart' as http;
 
 class UserServices {
+  //SECTION GET
   Future<List<UserModel>> getData() async {
     //SECTION Get Data
     List<UserModel> listUser = [];
@@ -32,5 +33,67 @@ class UserServices {
       print(e.toString());
     }
     return listUser;
+  }
+
+  //SECTION PUT/CHANGE
+  Future putData(
+    String id,
+    String usernameput,
+    String passwordput,
+  ) async {
+    try {
+      final response = await http.put(
+        Uri.parse('$baseUrl/$id'),
+        body: {
+          "username": usernameput,
+          "password": passwordput,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  //SECTION POST DATA
+  Future postData(
+    String usernameparam,
+    String passwordparam,
+  ) async {
+    try {
+      final response = await http.post(
+        Uri.parse(baseUrl),
+        body: {
+          "username": usernameparam,
+          "password": passwordparam,
+        },
+      );
+
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  //SECTION DELETE DATA
+  Future Delete(String id) async {
+    try {
+      final response = await http.delete(Uri.parse('$baseUrl/$id'));
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }
